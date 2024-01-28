@@ -1,8 +1,7 @@
 body {
   background-color: #fff;
-  width: 1440px;
-  height: 696px;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 .gallery-item {
   list-style: none;
@@ -14,7 +13,6 @@ body {
   display: flex;
   padding: 24px 156px;
   flex-wrap: wrap;
-
   justify-content: center;
   align-items: flex-start;
   gap: 24px;
@@ -22,4 +20,5 @@ body {
 .gallery-image {
   width: 360px;
   height: 200px;
+  flex-shrink: 0;
 }
