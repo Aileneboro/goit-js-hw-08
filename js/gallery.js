@@ -91,7 +91,7 @@ function createGallery(images) {
   gallery.append(...galleryItems);
 }
 
-function openModal({ dataset: { source } }) {
+function openModal(source) {
   const instance = basicLightbox.create(
     `<img src="${source}" width="1112" height="640">`
   );
@@ -106,9 +106,10 @@ function handleKeyDown(event) {
   }
 }
 
-gallery.addEventListener("click", ({ target }) => {
+gallery.addEventListener("click", (event) => {
   event.preventDefault();
 
+  const target = event.target;
   if (target.nodeName === "IMG") {
     const source = target.dataset.source;
     openModal(source);
