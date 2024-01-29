@@ -65,6 +65,7 @@ const images = [
 ];
 
 const gallery = document.querySelector(".gallery");
+let instance;
 
 function createGalleryItem({ preview, original, description }) {
   const galleryItem = document.createElement("li");
@@ -92,7 +93,7 @@ function createGallery(images) {
 }
 
 function openModal(source) {
-  const instance = basicLightbox.create(
+  instance = basicLightbox.create(
     `<img src="${source}" width="1112" height="640">`
   );
   instance.show();
