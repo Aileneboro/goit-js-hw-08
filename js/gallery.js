@@ -94,20 +94,26 @@ function createGallery(images) {
 
 function openModal(source) {
   instance = basicLightbox.create(
-    `<img src="${source}" width="1112" height="640">`
+    `<img src="${source}" width="1112" height="640">`,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", handleKeyDown);
+      },
+      onClose: () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      },
+    }
   );
   instance.show();
-  document.addEventListener("keydown", handleKeyDown);
 }
 
 function handleKeyDown(event) {
   if (event.key === "Escape") {
     instance.close();
-    document.removeEventListener("keydown", handleKeyDown);
   }
 }
 
-gallery.addEventListener("click", (event) => {
+function handleGalleryClick(event) {
   event.preventDefault();
 
   const target = event.target;
@@ -115,6 +121,8 @@ gallery.addEventListener("click", (event) => {
     const source = target.dataset.source;
     openModal(source);
   }
-});
+}
+
+gallery.addEventListener("click", handleGalleryClick);
 
 createGallery(images);
